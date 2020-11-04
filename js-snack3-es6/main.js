@@ -23,34 +23,17 @@ $(document).ready(() => {
         }
     ];
 
-
-
-
     //scorro l'array iniziale per copiarne ogni oggetto
     const cloned_array = arr1.map((element, index) => {
 
-        //inizializzo l'oggetto copiato
-        let cloned_obj = {};
-        //scorro l'oggetto in posizione i
-        for(var key in element){
-            //copio l'oggetto originale in un oggetto copia
-            cloned_obj[key] = element[key];
-        }
-        //pusho l'oggetto copiato nel nuovo array
-        return cloned_obj
-    });
+        //clono l'oggetto utilizzando l'operatore spread e gli aggiungo la proprietà position
+        let cloned_obj = {
+                ...element,
+                posiiton: rndCharacter()
+        };
 
-    //aggiungo la proprietà position ad ogni oggetto di cloned_array
-    cloned_array.forEach((element, index) => {
-
-        //assegno una lettera casuale alla proprietà position
-        element.position = (() => {
-            let rnd_char = '';
-            let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            let characters_length = characters.length;
-            rnd_char = characters.charAt(Math.floor(Math.random() * characters_length));
-            return rnd_char;
-        })();
+    //pusho l'oggetto clonato con in più la proprietà position nell'array clonato
+    return cloned_obj;
 
     });
 
@@ -60,10 +43,10 @@ $(document).ready(() => {
 
 });
 
-// function rndCharacter() {
-//    let rnd_char = '';
-//    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-//    let characters_length = characters.length;
-//    rnd_char = characters.charAt(Math.floor(Math.random() * characters_length));
-//    return rnd_char;
-// }
+function rndCharacter() {
+   let rnd_char = '';
+   let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+   let characters_length = characters.length;
+   rnd_char = characters.charAt(Math.floor(Math.random() * characters_length));
+   return rnd_char;
+}
