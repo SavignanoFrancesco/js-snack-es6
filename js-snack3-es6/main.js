@@ -44,7 +44,13 @@ $(document).ready(() => {
     cloned_array.forEach((element, index) => {
 
         //assegno una lettera casuale alla proprietà position
-        element.position = rndCharacter();
+        element.position = (() => {
+            let rnd_char = '';
+            let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let characters_length = characters.length;
+            rnd_char = characters.charAt(Math.floor(Math.random() * characters_length));
+            return rnd_char;
+        })();
 
     });
 
@@ -54,10 +60,10 @@ $(document).ready(() => {
 
 });
 
-function rndCharacter() {
-   let rnd_char = '';
-   let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-   let characters_length = characters.length;
-   rnd_char = characters.charAt(Math.floor(Math.random() * characters_length));
-   return rnd_char;
-}
+// function rndCharacter() {
+//    let rnd_char = '';
+//    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//    let characters_length = characters.length;
+//    rnd_char = characters.charAt(Math.floor(Math.random() * characters_length));
+//    return rnd_char;
+// }
