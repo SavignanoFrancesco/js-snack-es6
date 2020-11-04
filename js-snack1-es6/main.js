@@ -9,42 +9,37 @@ $(document).ready(function(){
     let bikes = [
         {
             nome: 'bici1',
-            peso: 15
+            peso: 40
         },
         {
             nome: 'bici2',
-            peso: 25
+            peso: 20
         },
         {
             nome: 'bici3',
-            peso: 20
+            peso: 25
         }
     ];
 
-    //inizializzo il peso corrente come peso del primo oggetto
-    let current_weight = bikes[0].peso;
-    //indice della bici più leggera
-    let lighter_bike = 0;
+    //inizializzo la bici più leggera come il primo elemento dell'array
+    let lighter_bike = bikes[0];
 
     //scorro gli elementi dell'array
-    bikes.forEach((bike, index) => {
-        //confronto il peso corrente con il peso dell'oggetto corrente
+    bikes.forEach((bike) => {
+        //confronto il peso dell'oggetto corrente con l'oggetto più leggero
         //se il peso dell'oggetto corrente è minore
-        if (current_weight > bike.peso) {
-
-            //il peso dell'oggetto corrente diventa il peso corrente
-            current_weight = bike.peso;
-            //salvo l'indice di questo ooggetto nell'array
-            lighter_bike = index;
+        if (bike.peso < lighter_bike.peso) {
+            //l'oggetto corrente diventa l'oggetto più leggero
+            lighter_bike = bike;
 
         }
     });
 
-    //destrutturo l'array prelevando l'oggetto con l'indice salvato in precedenza
-    const {nome, peso} = bikes[lighter_bike];
+    //destrutturo l'oggetto in due variabili contenenti le proprietà
+    const {nome, peso} = lighter_bike;
     console.log(nome);
     console.log(peso);
-    //stampo su pagina la bici più leggera e il suo peso
+    //stampo su pagina la bici più leggera
     $('.container').append(`
         <h1>La bici più leggera è: </h1>
         <div>${nome} : ${peso}kg</div>
