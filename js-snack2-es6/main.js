@@ -8,8 +8,8 @@ $(document).ready(() => {
     const arr1 = [1,2,3,4,5,6,7,8,9,10];
 
     //chiedo all'utente di inserire due numeri
-    let num1 = parseInt(prompt('Inserisci primo numero'));
-    let num2 = parseInt(prompt('Inserisci secondo numero'));
+    let num1 = userNumber();
+    let num2 = userNumber();
 
     //filtro il primo array
     const arr2 = arr1.filter((element, index) => {
@@ -24,3 +24,14 @@ $(document).ready(() => {
     console.log(arr2);
 
 });
+
+
+function userNumber(){
+    do {
+        num = parseInt(prompt('Inserisci un numero'));
+        if ((num < 1) || (num > 10) || (isNaN(num))) {
+            alert('Inserire un numero da 1 a 10 compresi!');
+        }
+    } while ((num < 1) || (num > 10) || (isNaN(num)));
+    return num;
+}
