@@ -11,7 +11,7 @@ $(document).ready(() => {
 
     const arr2 = arr1.filter((element, index) => {
 
-        if ((index >= (num1-1)) && (index <= (num2 - 2))) {
+        if ((index >= (num1 - 1)) && (index <= (num2 - 1))) {
             return true;
         }
 
