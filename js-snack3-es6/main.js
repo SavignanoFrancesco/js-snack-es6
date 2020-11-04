@@ -24,10 +24,10 @@ $(document).ready(() => {
     ];
 
 
-    console.log(arr1);
+
 
     //scorro l'array iniziale per copiarne ogni oggetto
-    const arr2 = arr1.map((element, index) => {
+    const cloned_array = arr1.map((element, index) => {
 
         //inizializzo l'oggetto copiato
         let cloned_obj = {};
@@ -40,12 +40,24 @@ $(document).ready(() => {
         return cloned_obj
     });
 
-    //aggiungo la proprietà position ad ogni oggetto di arr2
-    arr2.forEach((element, index) => {
-        element.position = 'a';
+    //aggiungo la proprietà position ad ogni oggetto di cloned_array
+    cloned_array.forEach((element, index) => {
+
+        //assegno una lettera casuale alla proprietà position
+        element.position = rndCharacter();
+
     });
 
-    console.log(arr2);
+    console.log(arr1);
+    console.log(cloned_array);
 
 
 });
+
+function rndCharacter() {
+   let rnd_char = '';
+   let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+   let characters_length = characters.length;
+   rnd_char = characters.charAt(Math.floor(Math.random() * characters_length));
+   return rnd_char;
+}
